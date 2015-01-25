@@ -1,5 +1,4 @@
 
-
 Name:           gnome-panel
 Summary:        Legacy GNOME panel
 License:        GPL-2.0
@@ -26,9 +25,9 @@ Requires:	evolution-data-server
 Requires:	gconf-editor
 Requires:	gnome-desktop
 Requires:	gnome-menus
-Requires:	librsvg
+Requires:	librsvg2
 Requires:	libwnck
-Requires:	libtelepathy-glib0
+Requires:	telepathy-glib
 # Sources:
 Source0:        gnome-panel-3.14.0.tar.xz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -95,7 +94,8 @@ rm -rf %{buildroot}
 %{_datadir}/icons/
 %{_datadir}/locale/
 %{_mandir}/man1/gnome-panel.1.gz
-
+%{_libdir}/girepository-1.0/PanelApplet-5.0.typelib
+%{_datadir}/gir-1.0/PanelApplet-5.0.gir
 %files devel
 %defattr(-, root, root)
 %{_libdir}/libpanel-applet.la
