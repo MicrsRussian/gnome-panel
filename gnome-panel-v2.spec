@@ -11,13 +11,13 @@
 
 Name: gnome-panel
 Version: %ver_major.0
-Release: F21
+
 
 Summary: The core programs for the GNOME GUI desktop environment
 License: GPLv2+ and LGPLv2+ and GFDL+
 Group: Graphical desktop/GNOME
 Url: ftp://ftp.gnome.org
-Packager: GNOME Maintainers Team <gnome at packages.altlinux.org>
+
 
 Source0: http://download.gnome.org/sources/gnome-panel/3.14/%{name}-%{version}.tar.xz
 
@@ -99,36 +99,6 @@ BuildRequires: gobject-introspection-devel
 BuildRequires: gnome-common
 Obsoletes: gdm-user-switch-applet < 1:2.91.6
 Conflicts: gnome-power-manager < 2.15.3
-Obsoletes: libgail-gnome < 1.20.4
-# Obsolete all old applet packages; this is the output of
-# repoquery --whatrequires libpanel-applet-2.so.0 gnome-python2-applet
-# as of Fedora 15 20110428, as well as ones from Fedora 14.
-Obsoletes: deskbar-applet <= 0:2.32.0-5
-Obsoletes: deskbar-applet-devel <= 0:2.32.0-5
-Obsoletes: file-browser-applet <= 0:0.6.6-2
-Obsoletes: glunarclock <= 0:0.34.1-2
-Obsoletes: gnome-applet-bubblemon <= 0:2.0.15-2
-Obsoletes: gnome-applet-cpufire <= 0:1.6-4
-Obsoletes: gnome-applet-globalmenu <= 0:0.7.9-2
-Obsoletes: gnome-applet-grandr <= 0:0.4.1-3
-Obsoletes: gnome-applet-jalali-calendar <= 0:1.7.1-3
-Obsoletes: gnome-applet-music <= 0:2.5.1-6
-Obsoletes: gnome-applet-sensors <= 0:2.2.7-5
-Obsoletes: gnome-applet-sensors-devel <= 0:2.2.7-5
-Obsoletes: gnome-applet-timer <= 0:2.1.4-3
-Obsoletes: gnome-applet-window-picker <= 0:0.5.8-3
-Obsoletes: gnome-applets <= 1:2.32.0-5
-Obsoletes: gnome-netstatus <= 0:2.28.2-2
-Obsoletes: gnome-python2-applet <= 0:2.32.0-2
-Obsoletes: gnome-schedule <= 0:2.0.2-7
-Obsoletes: gnubiff <= 0:2.2.13-5
-Obsoletes: hamster-applet <= 0:2.32.0-5
-Obsoletes: lock-keys-applet <= 0:1.0-22
-Obsoletes: uim-gnome <= 0:1.6.1-2
-Obsoletes: x-tile <= 0:1.8.6-2
-# Other ones that were already retired from Fedora 15
-Obsoletes: gnome-applet-netspeed <= 0.16-6
-Obsoletes: contact-lookup-applet <= 0.17-7
 
 %description
 GNOME (GNU Network Object Model Environment) is a user-friendly
