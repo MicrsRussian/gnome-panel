@@ -1,0 +1,104 @@
+
+
+Name:           gnome-panel
+Summary:        Legacy GNOME panel
+License:        GPL-2.0
+Group:          System/GUI/GNOME
+Version:        3.14.0
+Release:        3.14
+Url:            https://wiki.gnome.org/Projects/GnomeFlashback
+BuildRequires:  gobject-introspection
+BuildRequires:  intltool
+BuildRequires:  itstool
+BuildRequires:  NetworkManager
+BuildRequires:	glib2-devel
+
+BuildRequires:	gtk3-devel
+BuildRequires:	libSM-devel
+BuildRequires:	libICE-devel
+BuildRequires:	gnome-menus-devel
+BuildRequires:	dconf-devel
+BuildRequires:	libgweather-devel
+BuildRequires:	polkit-devel
+#
+Requires:	dconf-editor
+Requires:	evolution-data-server
+Requires:	gconf-editor
+Requires:	gnome-desktop
+Requires:	gnome-menus
+Requires:	librsvg
+Requires:	libwnck
+Requires:	libtelepathy-glib0
+# Sources:
+Source0:        gnome-panel-3.14.0.tar.xz
+BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+#
+
+%description
+
+%package devel
+Summary:        Legacy GNOME panel
+Group:          Development/Libraries/Other
+Requires:       %{name} = %{version}
+Requires: 		gtk3-devel
+Requires:		pango-devel
+Requires:		atk-devel
+Requires:		gdk-pixbuf-devel
+Requires:		libXext-devel
+Requires:		cairo-devel
+Requires:		glib2-devel
+Requires:		libX11-devel
+Requires:		libXau-devel
+
+
+%description devel
+
+
+%prep
+%setup
+
+
+%build
+
+%configure \
+  	--prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/gnome-panel \
+    --disable-static --disable-schemas-compile --with-in-process-applets=all \
+    PYTHON=/usr/bin/python2
+
+CFLAGS="${RPM_OPT_FLAGS} -fstack-protector" make %{?_smp_mflags}
+
+%install
+make DESTDIR=$RPM_BUILD_ROOT install
+
+%clean
+rm -rf %{buildroot}
+
+%post -p /sbin/ldconfig
+
+%postun -p /sbin/ldconfig
+
+%files 
+%defattr(-, root, root)
+%{_bindir}/gnome-desktop-item-edit
+%{_bindir}/gnome-panel
+%{_bindir}/panel-test-applets
+%{_libdir}/gnome-panel/
+%{_libdir}/libpanel-applet.so
+%{_libdir}/libpanel-applet.so.0
+%{_libdir}/libpanel-applet.so.0.0.0
+%{_libdir}/pkgconfig/libpanel-applet.pc
+%{_datadir}/applications/gnome-panel.desktop
+%{_datadir}/glib-2.0/schemas/
+%{_datadir}/gnome-panel
+%{_datadir}/gtk-doc/html/panel-applet-5.0/
+%{_datadir}/help/
+%{_datadir}/icons/
+%{_datadir}/locale/
+%{_mandir}/man1/gnome-panel.1.gz
+
+%files devel
+%defattr(-, root, root)
+%{_libdir}/libpanel-applet.la
+%{_includedir}/gnome-panel/
+
+%changelog
